@@ -18,13 +18,14 @@ if (!MUX_TOKEN_ID || !MUX_TOKEN_SECRET) {
   console.log("Mux credentials loaded successfully.");
 }
 
-// Initialize the Mux client
-const { Video } = new Mux(MUX_TOKEN_ID, MUX_TOKEN_SECRET);
+// Correct initialization for Mux Node SDK v8
+const mux = new Mux(MUX_TOKEN_ID, MUX_TOKEN_SECRET);
 
 // This endpoint creates a new Mux Live Stream
 app.post("/create-live-stream", async (req, res) => {
   try {
-    const stream = await Video.LiveStreams.create({
+    // Correct API call for Mux Node SDK v8
+    const stream = await mux.video.liveStreams.create({
       playback_policy: ["public"],
       new_asset_settings: { playback_policy: ["public"] },
       reconnect_window: 10,
