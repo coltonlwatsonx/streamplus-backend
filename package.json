@@ -1,0 +1,17 @@
+{
+  "name": "streamplus-backend",
+  "version": "1.0.0",
+  "description": "Backend for Stream+ App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@mux/mux-node": "^8.0.0",
+    "cors": "^2.8.5"
+  }
+}
