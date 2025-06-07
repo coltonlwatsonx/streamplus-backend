@@ -68,7 +68,9 @@ app.post("/create-live-stream", async (req, res) => {
 app.post("/mux-webhook", async (req, res) => {
     const sig = req.headers["mux-signature"];
     try {
-        Mux.Webhooks.verifyHeader(req.rawBody, sig, MUX_WEBHOOK_SECRET);
+        // Corrected Function Call: Use verifySignature from the mux instance
+        mux.webhooks.verifySignature(req.rawBody, sig, MUX_WEBHOOK_SECRET);
+
         const { type, data } = req.body;
         console.log(`Received Mux Webhook: ${type}`);
 
